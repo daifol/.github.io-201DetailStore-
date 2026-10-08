@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>201DetailStore | Productos para Detailing</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">201</div>
+      <div>
+        <strong>201DetailStore</strong>
+        <span>Productos para detailing</span>
+      </div>
+    </div>
+    <button class="cart-btn" onclick="openCart()">🛒 Carrito <b id="cartCount">0</b></button>
+  </div>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">TOXICIDAD SHINE</p>
+      <h1>Todo para el lavado y detailing de tu auto.</h1>
+      <p>Productos seleccionados para limpieza, brillo y protección.</p>
+      <a href="#catalogo" class="hero-btn">Ver productos</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="toolbar" id="catalogo">
+    <input id="search" type="search" placeholder="Buscar producto..." oninput="renderProducts()">
+    <select id="category" onchange="renderProducts()">
+      <option value="">Todas las categorías</option>
+      <option>Lavado exterior</option>
+      <option>Interior</option>
+      <option>Neumáticos y llantas</option>
+      <option>Brillo y protección</option>
+      <option>Detailing</option>
+    </select>
+  </section>
+
+  <div class="catalog-header">
+    <h2>Productos</h2>
+    <span id="productTotal"></span>
+  </div>
+  <section id="products" class="grid"></section>
+</main>
+
+<div id="cartModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" onclick="closeCart()">×</button>
+    <h2>Tu carrito</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">Total: <strong id="cartTotal">$0</strong></div>
+    <button class="primary full" onclick="checkout()">Continuar con el pedido</button>
+  </div>
+</div>
+
+<div id="checkoutModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" onclick="closeCheckout()">×</button>
+    <h2>Finalizar pedido</h2>
+    <form id="checkoutForm">
+      <label>Nombre y apellido<input required name="name"></label>
+      <label>Teléfono / WhatsApp<input required name="phone"></label>
+      <label>Dirección o punto de entrega<input required name="address"></label>
+      <label>Forma de pago
+        <select required name="payment">
+          <option value="">Seleccionar</option>
+          <option>Efectivo</option>
+          <option>Transferencia bancaria</option>
+        </select>
+      </label>
+      <label>Observaciones<textarea name="notes" placeholder="Horario, indicaciones, etc."></textarea></label>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <button class="primary full" type="submit">Confirmar pedido</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <strong>201DetailStore</strong>
+  <p>Productos Toxicidad Shine para lavado y detailing automotor.</p>
+  <small>Versión de prueba · Los precios y productos son de ejemplo.</small>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
